@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> Welcome To Youtube Clone</h1>
+    <form action = '' method = "POST" class = 'form'>
+        {% csrf_token %}
+        <div class="form-group" style = 'width: 200px;  '>
+            <label for="username">Username:</label>
+            <input type="username" class="form-control" name = 'username' placeholder="username">
+        </div>
+        <div class="form-group" style = 'width: 200px;  '>
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name = 'email' placeholder="email">
+        </div>
+        <div class="form-group" style = 'width: 200px;  '>
+            <label for="password1">Password</label>
+            <input type="password" class="form-control" name = 'password1' placeholder="password">
+        </div>
+        <div class="form-group" style = 'width: 200px;  '>
+            <label for="password2">Confirm Password</label>
+            <input type="password" class="form-control" name = 'password2' placeholder="password">
+        </div>
+        
+        <input type = 'submit' class = 'btn btn-primary' value = 'Register'>
+    </form>
+{% endblock %}

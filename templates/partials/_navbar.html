@@ -1,0 +1,65 @@
+<nav class = 'navbar navbar-expand-lg navbar-light bg-light'>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="{% url 'youtube:home' %}"
+             {% if "home" in request.path %}
+                class = 'active nav-link test'
+             {% else %}
+                class = 'nav-link test'
+             {% endif %}
+             >Home</a>
+        </li>
+        {% if request.user.is_staff %}
+            <li class="nav-item">
+                <a href="{% url 'youtube:new_video' %}"
+                {% if 'new_video' in request.path %}
+                    class = 'nav-link active'
+                {% else %}
+                    class = 'nav-link'
+                {% endif %}
+                >Upload Video</a>
+            </li>
+            <li class = 'nav-item'>
+                <a href="{% url 'youtube:login' %}"
+                {% if 'login' in request.path %}
+                    class = 'nav-link active'
+                {% else %}
+                    class = 'nav-link'
+                {% endif %}
+                >Sign In</a>
+            </li>
+            <li class = 'nav-item'>
+                <a href = '{% url "youtube:register" %}' 
+                {% if 'register' in request.path %}
+                    class = 'nav-link active'
+                {% else %}
+                    class = 'nav-link'
+                {% endif %}
+                >Sign Up</a>
+            </li>
+        {% else %}
+            <li class = 'nav-item'>
+                <a href="{% url 'youtube:login' %}"
+                {% if 'login' in request.path %}
+                    class = 'nav-link active'
+                {% else %}
+                    class = 'nav-link'
+                {% endif %}
+                >Sign In</a>
+            </li>
+            <li class = 'nav-item'>
+                <a href = '{% url "youtube:register" %}' 
+                {% if 'register' in request.path %}
+                    class = 'nav-link active'
+                {% else %}
+                    class = 'nav-link'
+                {% endif %}
+                >Sign Up</a>
+            </li>
+        {% endif %}
+        
+        <li class = 'nav-item'>
+            <a href = '{% url "youtube:logout" %}' class = 'nav-link nav-primary'>Logout</a>
+        </li>
+    </ul>
+</nav>

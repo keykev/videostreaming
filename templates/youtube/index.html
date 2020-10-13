@@ -1,0 +1,23 @@
+{% extends 'base.html' %}  
+{% load static %}
+
+{% block content %} 
+  <div style = 'color:white;'>
+    <h1>Home</h1>
+    <h3>Welcome to Detube</h3>
+  </div>
+  
+
+  <div class = 'home-flex'>
+    {% for video in videos%}
+    <div class="card mb-4 ml-5" style="width: 18rem;">
+      <h5 class="card-header">{{video.title}}</h5>
+      <div class="card-body">
+        <h6> Uploaded By {{video.user}}</h6>
+        <p class="card-text">{{video.description}}</p>
+        <p style="text-align: right"><a href='{% url "youtube:video" video.id %}'>Watch Video</a></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

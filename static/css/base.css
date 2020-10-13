@@ -1,0 +1,31 @@
+body, html {
+    background-color: #444;
+    height:100%;
+    
+}
+
+.home-flex{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+}
+
+.bg-img {
+    background-image: url('../img/aot_landing_page.jpg');
+    background-size: cover;
+    background-position:center;
+    z-index: 99;
+    height:100%;
+    position:relative;
+    
+    
+}
+
+.center-text {
+    position:absolute;
+    text-align:center;
+    font-size: 20px;
+    color:red;
+    width:100%;
+    
+}

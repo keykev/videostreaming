@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{video.title}}</h1>
+<p>{{video.description}}</p>
+<br>
+<video style = 'margin:auto;' width = '600' height = '300' controls>
+    <source src = "{{MEDIA_URL}}/{{video_path}}" type = 'video/mp4'>
+</video>
+<p>Comment: </p>
+<form action = '/video/comments/' method = 'POST'>    
+    {% csrf_token %}
+
+    {% if request.user.is_anonymous %}
+        <p> Please <a href = "{% url 'youtube:login' %}">Log in</a> to comment</p>
+    
+    {% else %}
+        
+        <p>{{user}}-</p>
+        <div class = 'form-group'>
+            {{comment_form.text}}
+        </div>  
+    {% endif %}
+    
+    <input type = 'hidden' name = 'video' value = {{video.id}} />
+    <input type = 'submit' class = 'btn btn-info'>
+
+</form>
+{% for comment in comments %}
+    <div class = 'card'>
+        <div class="card-body">
+            <p>{{comment.text}}</p>
+        </div>
+    </div>
+    
+
+{% endfor %}
+
+{% endblock%}
